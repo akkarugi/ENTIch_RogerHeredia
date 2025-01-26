@@ -1,0 +1,392 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li {
+    margin: 0 15px;
+}
+
+header nav li a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Sidebar */
+aside {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+aside nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 220px; /* Adjust for the sidebar */
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Juegos y comentarios */
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.game-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.game-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.game-card p {
+    margin: 10px 0;
+}
+
+.game-card a {
+    display: block;
+    margin: 10px 0;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-card a:hover {
+    text-decoration: underline;
+}
+
+.game-card iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    margin-bottom: 5px;
+}
+
+.comment strong {
+    color: #333;
+}
+
+.comment .datetime {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Footer */
+footer {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Game List */
+.game-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.game-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.game-item h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.game-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.game-item p {
+    margin: 10px 0;
+}
+
+.game-item a {
+    display: block;
+    margin: 10px 0;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-item a:hover {
+    text-decoration: underline;
+}
+
+/* Container for the game information */
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Game title */
+.game-title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Game cover image */
+.game-cover {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Price */
+.game-price {
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* YouTube video */
+.game-video {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Steam link */
+.steam-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.steam-link:hover {
+    text-decoration: underline;
+}
+
+/* Comments section */
+.comments-section {
+    margin-top: 40px;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+
+.comment-text {
+    margin: 5px 0;
+}
+
+.comment-timestamp {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Comment form */
+.comment-form {
+    margin-top: 20px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.comment-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #218838;
+}
