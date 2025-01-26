@@ -16,30 +16,28 @@ if (!isset($_POST["name"]) || !isset($_POST["username"]) ||
     die("ERROR 1: Formulario no enviado.");
 }
 
-// LIMPIAR ESPACIOS Y VALIDAR LONGITUD DE LOS CAMPOS
-$name = trim($_POST["name"]);
+// FUNCIONES DE LIMPIEZA Y VALIDACIÓN
+function cleanData($data) {
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
+$name = cleanData($_POST["name"]);
+$username = cleanData($_POST["username"]);
+$email = cleanData($_POST["email"]);
+$description = isset($_POST["description"]) ? cleanData($_POST["description"]) : "";
+
+// VALIDAR LONGITUD DE LOS CAMPOS
 if (strlen($name) < 3) {
     die("ERROR 2: El nombre es demasiado corto.");
 }
 
-$username = trim($_POST["username"]);
 if (strlen($username) < 5) {
     die("ERROR 3: El nombre de usuario es demasiado corto.");
 }
 
-$email = trim($_POST["email"]);
 if (strlen($email) < 6) {
     die("ERROR 4: El correo electrónico es demasiado corto.");
 }
-
-// LA DESCRIPCIÓN PUEDE ESTAR VACÍA
-$description = isset($_POST["description"]) ? trim($_POST["description"]) : "";
-$description = htmlspecialchars($description, ENT_QUOTES, 'UTF-8');
-
-// COMPROBAR CARACTERES PROBLEMÁTICOS
-$name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-$username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-$email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
 
 // VALIDAR FORMATO DE EMAIL
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

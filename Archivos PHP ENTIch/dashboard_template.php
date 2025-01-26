@@ -1,10 +1,11 @@
 <?php
 
+// Función para abrir el panel de control
 function openDashboard() {
     echo <<<EOD
     <aside>
         <nav>
-        <h2> OPCIONES </h2>
+            <h2> OPCIONES </h2>
             <ul>
                  <li><a href="/dashboard.php" class="sidebar-link">Perfil</a></li>
                  <li><a href="/dashboard_games.php" class="sidebar-link">Juegos</a></li>
@@ -16,6 +17,7 @@ function openDashboard() {
 EOD;
 }
 
+// Función para cerrar el panel de control
 function closeDashboard() {
     echo <<<EOD
     </article>

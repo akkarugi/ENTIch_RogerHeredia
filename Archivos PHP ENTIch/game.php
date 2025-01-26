@@ -7,20 +7,22 @@ if (!isset($_GET['id_game'])) {
 }
 
 $id_game = intval($_GET['id_game']);
-$conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
+$conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
-if (!$conn) {
-    die("ERROR: No se pudo conectar a la base de datos.");
+if ($conn->connect_error) {
+    die("ERROR: No se pudo conectar a la base de datos: " . $conn->connect_error);
 }
 
-$query = "SELECT * FROM games WHERE id_game = $id_game";
-$result = mysqli_query($conn, $query);
+$stmt = $conn->prepare("SELECT * FROM games WHERE id_game = ?");
+$stmt->bind_param("i", $id_game);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if (!$result || mysqli_num_rows($result) != 1) {
+if (!$result || $result->num_rows != 1) {
     die("ERROR: No se pudo obtener la información del juego.");
 }
 
-$game = mysqli_fetch_array($result);
+$game = $result->fetch_assoc();
 
 require_once("template.php");
 printHead("ENTIch: " . htmlspecialchars($game['title'], ENT_QUOTES, 'UTF-8'));
@@ -36,12 +38,15 @@ echo "</div>";
 
 echo "<div class='comments-section'>";
 echo "<h3>Comentarios</h3>";
-$query_comments = "SELECT comments.comment, comments.created_at, creators.name FROM comments INNER JOIN creators ON comments.id_creator = creators.id_creator WHERE comments.id_game = $id_game ORDER BY comments.created_at DESC";
-$result_comments = mysqli_query($conn, $query_comments);
+$query_comments = "SELECT comments.comment, comments.created_at, creators.name FROM comments INNER JOIN creators ON comments.id_creator = creators.id_creator WHERE comments.id_game = ? ORDER BY comments.created_at DESC";
+$stmt_comments = $conn->prepare($query_comments);
+$stmt_comments->bind_param("i", $id_game);
+$stmt_comments->execute();
+$result_comments = $stmt_comments->get_result();
 
-if ($result_comments && mysqli_num_rows($result_comments) > 0) {
+if ($result_comments && $result_comments->num_rows > 0) {
     echo "<ul class='comments-list'>";
-    while ($comment = mysqli_fetch_array($result_comments)) {
+    while ($comment = $result_comments->fetch_assoc()) {
         echo "<li class='comment-item'>";
         echo "<strong>" . htmlspecialchars($comment['name'], ENT_QUOTES, 'UTF-8') . ":</strong> ";
         echo "<p>" . htmlspecialchars($comment['comment'], ENT_QUOTES, 'UTF-8') . "</p>";
@@ -66,5 +71,7 @@ EOD;
 echo "</div>";
 
 closeBody();
-mysqli_close($conn);
+$stmt_comments->close();
+$stmt->close();
+$conn->close();
 ?>

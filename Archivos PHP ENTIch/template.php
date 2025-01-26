@@ -1,7 +1,11 @@
 <?php
 
-function printHead($title)
-{
+function cleanData($data) {
+    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+}
+
+function printHead($title) {
+    $title = cleanData($title);
     echo <<<EOD
 <!doctype html>
 <html>
@@ -13,6 +17,9 @@ EOD;
 }
 
 function getLoginOptions(){
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
     if(isset($_SESSION["id_creator"])){
         return <<<EOD
         <li><a href="/dashboard.php">Dashboard</a></li>
@@ -26,10 +33,10 @@ function getLoginOptions(){
 
 function openBody ($title="ENTIch")
 {
+    $title = cleanData($title);
     $login_opt = getLoginOptions();
     echo <<<EOD
 <body>
-
 <header>
 <h1>{$title}</h1>
 <nav>
@@ -47,11 +54,8 @@ function closeBody ()
 {
     echo <<<EOD
 </main>
-
 <footer>
-
 </footer>
-
 </body>
 </html>
 EOD;

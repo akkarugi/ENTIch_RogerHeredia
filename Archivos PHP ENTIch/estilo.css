@@ -18,10 +18,10 @@ header {
     color: #fff;
     padding: 20px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 header h1 {
-    text-align: center;
     font-size: 2.5em;
     margin-bottom: 10px;
 }
@@ -30,8 +30,6 @@ header nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 header nav li {
@@ -49,7 +47,6 @@ header nav li a {
 
 header nav li a:hover {
     background-color: #333;
-    color: #fff;
 }
 
 /* Sidebar */
@@ -67,7 +64,6 @@ aside {
 
 aside nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
 aside nav ul li {
@@ -80,29 +76,26 @@ aside nav ul li {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar-link:hover {
     background-color: #4CAF50;
-    color: #fff;
 }
 
 /* Main Content */
 main {
     padding: 20px;
     background-color: #fff;
-    margin: 20px auto;
+    margin: 20px auto 20px 220px; /* Adjust for the sidebar */
     max-width: 1200px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-left: 220px; /* Adjust for the sidebar */
 }
 
 h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #333;
 }
 
 form {
@@ -158,43 +151,53 @@ form input[type="submit"]:hover {
     justify-content: center;
 }
 
-.game-card {
+.game-card,
+.game-item {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
     text-align: center;
+}
+
+.game-card {
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.game-card h3 {
+.game-card h3,
+.game-item h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.game-card img {
+.game-card img,
+.game-item img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.game-card p {
+.game-card p,
+.game-item p {
     margin: 10px 0;
 }
 
-.game-card a {
+.game-card a,
+.game-item a {
     display: block;
     margin: 10px 0;
     color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
+    transition: text-decoration 0.3s ease;
 }
 
-.game-card a:hover {
+.game-card a:hover,
+.game-item a:hover {
     text-decoration: underline;
 }
 
@@ -206,16 +209,18 @@ form input[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
-.comment {
-    background-color: #f9f9f9;
+.comment,
+.comment p,
+.comment-form textarea,
+.comment-form button {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.comment p {
-    margin-bottom: 5px;
+.comment {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .comment strong {
@@ -225,6 +230,25 @@ form input[type="submit"]:hover {
 .comment .datetime {
     font-size: 0.9em;
     color: #888;
+}
+
+.comment-form textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    resize: vertical;
+}
+
+.comment-form button {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #218838;
 }
 
 /* Footer */
@@ -239,50 +263,7 @@ footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Game List */
-.game-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.game-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.game-item h2 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-}
-
-.game-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.game-item p {
-    margin: 10px 0;
-}
-
-.game-item a {
-    display: block;
-    margin: 10px 0;
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.game-item a:hover {
-    text-decoration: underline;
-}
-
-/* Container for the game information */
+/* Game Details */
 .game-container {
     max-width: 800px;
     margin: 0 auto;
@@ -292,7 +273,6 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Game title */
 .game-title {
     font-size: 2em;
     font-weight: bold;
@@ -300,7 +280,6 @@ footer {
     margin-bottom: 20px;
 }
 
-/* Game cover image */
 .game-cover {
     display: block;
     margin: 0 auto 20px;
@@ -308,15 +287,12 @@ footer {
     border-radius: 10px;
 }
 
-/* Price */
 .game-price {
     font-size: 1.5em;
-    color: #333;
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* YouTube video */
 .game-video {
     display: block;
     margin: 0 auto 20px;
@@ -325,7 +301,6 @@ footer {
     overflow: hidden;
 }
 
-/* Steam link */
 .steam-link {
     display: block;
     text-align: center;
@@ -333,13 +308,13 @@ footer {
     font-size: 1.2em;
     color: #007bff;
     text-decoration: none;
+    transition: text-decoration 0.3s ease;
 }
 
 .steam-link:hover {
     text-decoration: underline;
 }
 
-/* Comments section */
 .comments-section {
     margin-top: 40px;
 }
@@ -361,32 +336,39 @@ footer {
     font-size: 0.9em;
     color: #666;
 }
-
-/* Comment form */
-.comment-form {
-    margin-top: 20px;
+.comments-list {
+    list-style-type: none;
+    padding: 0;
 }
 
-.comment-form textarea {
-    width: 100%;
+.comment-item {
+    background-color: #f9f9f9;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-    resize: vertical;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.comment-form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+.comment-item strong {
+    color: #333;
+}
+
+.comment-item small {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
     color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 1em;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-.comment-form button:hover {
-    background-color: #218838;
+.delete-button:hover {
+    background-color: #ff1a1a;
 }
